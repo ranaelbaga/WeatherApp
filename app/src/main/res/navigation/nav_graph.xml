@@ -1,0 +1,126 @@
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/mainFragment">
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.example.project2.fragments.MainFragment"
+        android:label="main fragment"
+        tools:layout="@layout/fragment_main">
+        <action
+            android:id="@+id/action_mainFragment_to_savedFragment"
+            app:destination="@id/savedFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_searchFragment"
+            app:destination="@id/searchFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.example.project2.fragments.SearchFragment"
+        android:label="Search"
+        tools:layout="@layout/fragment_search">
+        <action
+            android:id="@+id/action_searchFragment_to_savedFragment"
+            app:destination="@id/savedFragment">
+<!--            <argument-->
+<!--                android:name="latitude"-->
+<!--                app:argType="double" />-->
+<!--            <argument-->
+<!--                android:name="longitude"-->
+<!--                app:argType="double" />-->
+            <argument
+                android:name="selectedCity"
+                app:argType="string"
+                 />
+        </action>
+    </fragment>
+
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.example.project2.fragments.DetailFragment"
+        android:label="detail fragment"
+        tools:layout="@layout/fragment_detail">
+        <argument
+            android:name="cityName"
+            app:argType="string" />
+        <argument
+            android:name="region"
+            app:argType="string" />
+        <argument
+            android:name="country"
+            app:argType="string" />
+        <argument
+            android:name="latitude"
+            app:argType="float" />
+        <argument
+            android:name="longitude"
+            app:argType="float" />
+        <argument
+            android:name="localtime"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_detailFragment_to_savedFragment"
+            app:destination="@id/savedFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/savedFragment"
+        android:name="com.example.project2.fragments.SavedFragment"
+        android:label="fragment_saved"
+        tools:layout="@layout/fragment_saved">
+<!--        <argument-->
+<!--            android:name="latitude"-->
+<!--            app:argType="double" />-->
+<!--        <argument-->
+<!--            android:name="longitude"-->
+<!--            app:argType="double" />-->
+        <argument
+            android:name="selectedCity"
+            app:argType="string"
+            />
+        <action
+            android:id="@+id/action_savedFragment_to_searchFragment"
+            app:destination="@id/searchFragment" />
+        <action
+            android:id="@+id/action_savedFragment_to_detailFragment"
+            app:destination="@id/detailFragment" >
+            <argument
+                android:name="cityName"
+                app:argType="string" />
+            <argument
+                android:name="region"
+                app:argType="string" />
+            <argument
+                android:name="country"
+                app:argType="string" />
+            <argument
+                android:name="latitude"
+                app:argType="float" />
+            <argument
+                android:name="longitude"
+                app:argType="float" />
+            <argument
+                android:name="localtime"
+                app:argType="string" />
+        </action>
+        <action
+            android:id="@+id/action_savedFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.example.project2.fragments.SplashFragment"
+        android:label="fragment_splash"
+        tools:layout="@layout/fragment_splash">
+        <action
+            android:id="@+id/action_splashFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+        <action
+            android:id="@+id/action_splashFragment_to_mainFragment2"
+            app:destination="@id/mainFragment" />
+    </fragment>
+
+</navigation>
